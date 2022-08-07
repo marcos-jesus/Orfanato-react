@@ -3,19 +3,15 @@ import mapMarkerImg from '../images/Logo.svg'
 import { Link } from 'react-router-dom'
 import { FiPlus} from 'react-icons/fi'
 
-import { MapContainer, Marker, Popup, LatLngBounds} from 'react-leaflet'
+import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet'
 
 import '../styles/pages/orphanagesMap.css'
-import { latLngBounds } from 'leaflet'
 
 function OrphanagesMap () {
-  
-  const position = new LatLngBounds([-23.5358976,-46.7417327])
-
   return (
     <div id="page-map">
       <aside>
-        <header>
+        <header>  
           <img src={mapMarkerImg} alt="Happy" />
           <h2>Escolha um orfanato no mapa</h2>
           <p>Muitas crianças estão esperando a sua visita :) </p>
@@ -28,13 +24,22 @@ function OrphanagesMap () {
       </aside>
 
       <div>
-        <MapContainer center={position} zoom={15}>
-          <Marker position={position}>
-            <Popup>
-              A pretty CSS3 popup. <br /> Easily customizable.
-            </Popup>
-          </Marker>
-        </MapContainer>
+      <MapContainer 
+        center={[-23.5358976,-46.7417327]} 
+        zoom={13} 
+        scrollWheelZoom={true}
+        style={{ width:'100vw', height: '100%', position:'absolute', overflowY:'hidden' }}
+      >
+        <TileLayer
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
+        <Marker position={[-23.5358976,-46.7417327]}>
+          <Popup>
+            Orfanato.
+          </Popup>
+        </Marker>
+      </MapContainer>
       </div>
 
 
