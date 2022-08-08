@@ -1,9 +1,11 @@
 #page-map {
-  width: 100vh;
+  width: 100%;
   height: 100vh;
 
   position: relative;
   display: flex;
+
+  overflow-x: hidden;
 }
 
 #page-map aside {
